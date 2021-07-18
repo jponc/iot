@@ -8,6 +8,7 @@ test("parses paylaod properly", () => {
 
   expect(decodeUplink(input)).toEqual({
     data: {
+      name: "Home Temp/Hum/AirQuality",
       bytes: [0, 0, 140, 7, 100, 144, 1, 0, 0, 254],
       port: 8,
       values: [

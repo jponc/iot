@@ -3,6 +3,7 @@
 function decodeUplink(input) {
   // create the object to collect the data for returning the decoded payload
   var data = {
+    name: "Home Door",
     bytes: input.bytes, // original payload
     port: input.fPort, // lorawan port
     values: [],

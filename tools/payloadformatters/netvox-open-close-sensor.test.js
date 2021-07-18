@@ -8,6 +8,7 @@ test("open", () => {
 
   expect(decodeUplink(input)).toEqual({
     data: {
+      name: "Home Door",
       bytes: [1, 2, 1, 31, 1, 0, 0, 0, 0, 0, 0],
       port: 6,
       values: [
@@ -34,6 +35,7 @@ test("close", () => {
 
   expect(decodeUplink(input)).toEqual({
     data: {
+      name: "Home Door",
       bytes: [1, 2, 1, 31, 0, 0, 0, 0, 0, 0, 0],
       port: 6,
       values: [

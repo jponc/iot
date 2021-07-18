@@ -8,6 +8,7 @@ test("parses paylaod properly", () => {
 
   expect(decodeUplink(input)).toEqual({
     data: {
+      name: "Motion Sensor",
       bytes: [15, 32, 6, 32, 246, 2, 0, 136],
       port: 8,
       values: [
