@@ -33,5 +33,14 @@ provider:
             - xray:PutTelemetryRecords
 
 functions:
+  TheThingsStackWebhook:
+    handler: bin/TheThingsStackWebhook
+    events:
+      - http:
+          path: /webhooks/ttn
+          method: post
+          cors: true
 
 custom:
+  env:
+    TOKEN: ${ssm:/${self:service}/${self:provider.stage}/TOKEN}
