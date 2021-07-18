@@ -2,7 +2,7 @@
 
 function decodeUplink(input) {
   function toBits(inputByte) {
-    return ("00000000"+inputByte.toString(2)).slice(-8)
+    return ("00000000"+inputByte.toString(2)).slice(-8);
   }
 
 
@@ -28,13 +28,14 @@ function decodeUplink(input) {
 
 
   // battery
-  var batteryBits = toBits(batteryByte);
-  var batteryPercentage = +(100.0 * (parseInt(batteryBits.slice(0, 4), 2) / 15)).toFixed(2)
+  let batteryVoltage = battery = input.bytes[1] & 0x0f;
+  batteryVoltage = (25 + battery) / 10;
 
   data.values.push({
-    type: 'battery_percentage',
-    value: batteryPercentage,
+    type: 'battery_voltage',
+    value: batteryVoltage,
   });
+
 
   // internal temperature
   var tempBits = toBits(tempByte);

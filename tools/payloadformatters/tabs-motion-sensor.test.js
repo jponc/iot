@@ -12,8 +12,8 @@ test("parses paylaod properly", () => {
       port: 8,
       values: [
         { type: "occupied", value: 1 },
-        { type: "battery_percentage", value: 13.33 },
-        { type: "internal_temperature", value: -26 },
+        { type: "battery_voltage", value: 2.5 },
+        { type: "temperature", value: -26 },
       ],
     },
     errors: [],
