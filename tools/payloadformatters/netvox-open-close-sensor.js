@@ -1,10 +1,6 @@
 // https://docs.microshare.io/assets/pdf/TBHV100.pdf
 
 function decodeUplink(input) {
-  function toBits(inputByte) {
-    return ("00000000" + inputByte.toString(2)).slice(-8);
-  }
-
   // create the object to collect the data for returning the decoded payload
   var data = {
     bytes: input.bytes, // original payload
