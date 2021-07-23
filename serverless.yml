@@ -35,12 +35,22 @@ provider:
 functions:
   TheThingsStackWebhook:
     handler: bin/TheThingsStackWebhook
+    timeout: 30
     events:
       - http:
           path: /webhooks/ttn
           method: post
           cors: true
+    environment:
+      INFLUX_BUCKET: ${self:custom.env.INFLUX_BUCKET}
+      INFLUX_ORG: ${self:custom.env.INFLUX_ORG}
+      INFLUX_TOKEN: ${self:custom.env.INFLUX_TOKEN}
+      INFLUX_HOST: ${self:custom.env.INFLUX_HOST}
 
 custom:
   env:
     TOKEN: ${ssm:/${self:service}/${self:provider.stage}/TOKEN}
+    INFLUX_HOST: ${ssm:/${self:service}/${self:provider.stage}/INFLUX_HOST}
+    INFLUX_BUCKET: ${ssm:/${self:service}/${self:provider.stage}/INFLUX_BUCKET}
+    INFLUX_ORG: ${ssm:/${self:service}/${self:provider.stage}/INFLUX_ORG}
+    INFLUX_TOKEN: ${ssm:/${self:service}/${self:provider.stage}/INFLUX_TOKEN}
