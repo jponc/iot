@@ -18,7 +18,7 @@ test("parses paylaod properly", () => {
         },
         {
           type: "temperature",
-          value: -25,
+          value: 10,
         },
         {
           type: "humidity",

@@ -40,7 +40,7 @@ function decodeUplink(input) {
 
   // internal temperature
   var tempBits = toBits(tempByte);
-  var internal = parseInt(tempBits.slice(1, 8), 2) - 32
+  var internal = parseInt(tempBits.slice(1, 8), 2) + 3
 
   data.values.push({
     type: 'internal_temperature',

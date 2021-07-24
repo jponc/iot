@@ -32,7 +32,7 @@ function decodeUplink(input) {
 
   // temperature
   var tempBits = toBits(tempByte);
-  var temperature = parseInt(tempBits.slice(1, 8), 2) - 32
+  var temperature = parseInt(tempBits.slice(1, 8), 2) + 3
 
   data.values.push({
     type: 'temperature',
