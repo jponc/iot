@@ -33,6 +33,11 @@ provider:
             - xray:PutTelemetryRecords
 
 functions:
+  TheThingsStackAuthoriser:
+    handler: bin/TheThingsStackAuthoriser
+    environment:
+      TOKEN: ${self:custom.env.TOKEN}
+
   TheThingsStackWebhook:
     handler: bin/TheThingsStackWebhook
     timeout: 30
@@ -41,6 +46,9 @@ functions:
           path: /webhooks/ttn
           method: post
           cors: true
+          authorizer:
+            name: TheThingsStackAuthoriser
+            resultTtlInSeconds: 0
     environment:
       INFLUX_BUCKET: ${self:custom.env.INFLUX_BUCKET}
       INFLUX_ORG: ${self:custom.env.INFLUX_ORG}
