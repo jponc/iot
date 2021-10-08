@@ -55,7 +55,6 @@ func (s *Service) TheThingsNetworkWebhook(ctx context.Context, request events.AP
 			curTime,
 		)
 
-		log.Infof("Added")
 		s.writer.WritePoint(ctx, p)
 	}
 
