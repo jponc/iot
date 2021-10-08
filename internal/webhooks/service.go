@@ -41,6 +41,8 @@ func (s *Service) TheThingsNetworkWebhook(ctx context.Context, request events.AP
 
 	name := uplinkWebhook.UplinkMessage.DecodedPayload.Name
 
+	curTime := time.Now()
+
 	for _, value := range uplinkWebhook.UplinkMessage.DecodedPayload.Values {
 		p := influxdb2.NewPoint("reading",
 			map[string]string{
@@ -50,7 +52,7 @@ func (s *Service) TheThingsNetworkWebhook(ctx context.Context, request events.AP
 			map[string]interface{}{
 				"value": value.Value,
 			},
-			time.Now(),
+			curTime,
 		)
 
 		log.Infof("Added")
